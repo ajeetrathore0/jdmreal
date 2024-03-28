@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'css/imports.css'%}">
+    <link rel="stylesheet" href="{% static 'css/signup.css'%}">
+
+    <title>JDM realestate || home</title>
+    <style>
+    body,html{
+        overflow-x:hidden;
+    }
+    @media only screen and (max-width:680px){
+        #menu_toggle{
+    width:0;
+    height:0;
+    display:flex !important;
+    overflow:hidden;
+}
+.shownavs{
+    width:max-content !important;
+
+    display:flex;
+    overflow:visible !important;
+    padding:10px;
+}
+        .welcomeui .ui {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+.schoollogo{
+    width:190px !important;
+}
+
+.menubar{
+    position: fixed !important;
+    background: white;
+    flex-direction: column;
+    height: 100vh;
+    right: 0;
+    width: 0px;
+    gap: 10px !important;
+    top: 70px;
+
+    overflow:hidden;
+}
+
+.menubar li{
+    letter-spacing: 6px !important;
+    padding: 10px 20px !important;
+}
+
+.usericon{
+        transform: translateX(-52px);
+}
+}
+.welcomeui {
+    position: relative;
+    width: 100vw;
+    /* height: 80vh; */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.welcomeui .ui .slogan {
+    width: 100%;
+    transform: translate(0, -62px);
+}
+
+.welcomeui .slogan p {
+    font-size: 17px;
+    color: rgba(39, 34, 34, 0.781);
+    font-family: 'Chivo', sans-serif;
+    opacity: .6;
+    margin: 20px 0px;
+}
+
+.welcomeui .slogan a {
+    font-size: 13px;
+    font-family: 'Chivo', sans-serif;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 20px 0px;
+    padding: 7px 10px;
+    background: rgb(190, 41, 190);
+    color: white;
+}
+
+.mainnav .menubar {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    position: relative;
+    list-style: none;
+}
+
+.mainnav .menubar li {
+    font-size: 11px !important;
+    /* font-family: 'Roboto', sans-serif !important; */
+    text-transform: capitalize;
+    font: caption;
+    line-height: 10px;
+    font-weight: 550;
+    letter-spacing: 1.2px;
+    padding: 8px 4px;
+    border-radius: 31px;
+}
+.welcomeui .slogan h4 {
+    font-size: 17px;
+    color: rgb(7, 3, 3);
+    font-family: 'Sono', sans-serif;
+    margin: 9px 0px;
+    /* text-transform: uppercase; */
+}
+#schoolpic{
+    width:152px !important;
+}
+
+.card-3d-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 371px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 30px;
+}
+
+    }
+    .menubar{
+        transition:all 1s;
+    }
+
+.menubar a{
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+}
+#menu_toggle{
+    display:none;
+    flex-direction:column;
+    position:fixed;
+    gap:3px;
+    border:2px solid black;
+    border-radius:5px;
+    width:37px;
+    height:37px;
+    top:10px;
+    right:10px;
+    align-items:center;
+    justify-content:center;
+}
+#menu_toggle i{
+        width: 25px;
+    height: 3px;
+    background: black;
+
+}
+</style>
+</head>
+
+<body>
+    <nav class="mainnav">
+        <div class="logo"><img src="{% static 'assets/logos/logo.png'%}" alt=""></div>
+
+        <div class="menu">
+            <ul class="menubar">
+                <li class="menues activeli">home</li>
+                <li class="menues">about</li>
+                <li class="menues">course</li>
+                <li class="menues">news</li>
+                <li class="menues">contact</li>
+            </ul>
+            <div class="usericon">
+                <img src="{% static 'assets/logos/user.svg'%}" alt="">
+            </div>
+
+
+        </div>
+        <span id='menu_toggle' onclick="document.querySelector('.menubar').classList.toggle('shownavs')">
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
+        <div class="loginsignup ">
+            <span id="login" class="lsbtn">login</span>
+            <!-- <span id="signup"  class="lsbtn">signup</span> -->
+        </div>
+
+        <!-- <img src="{% static 'assets/images/layered-peaks-haikei.svg'%}" alt="" style="width: 100vw;height:100%"> -->
+
+
+    </nav>
+
+    <section id="loginsignuparea">
+        <span id="closeloginsignuparea">X</span>
+        <img src="{% static 'assets/logos/logo.png'%}" alt="" style="width:110px;margin:10px">
+
+
+
+        <!-- <label for="email">
+                <span><img src="{% static 'assets/logos/email.svg'%}" alt="" ></span><input type="text" name="name" id="" placeholder="Enter email">
+            </label>
+            <label for="password">
+                <span><img src="{% static 'assets/logos/password.svg'%}" alt=""></span><input type="email" name="email" id="" placeholder="Enter password">
+            </label>
+            <label for="submit">
+               <input type="submit" value="login" id="" style="background: rgb(220, 111, 235);">
+            </label>
+            <label for="forget" id="forget">
+                <span><p>Signup</p></span>
+                <span><p>forgot password</p></span>
+            </label> -->
+
+
+        <div class="section">
+            <div class="container">
+                <div class="row full-height justify-content-center">
+                    <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                            <h6 class="mb-0 pb-3"><span>Log In </span><span>Book Demo</span></h6>
+                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                            <label for="reg-log"></label>
+                            <div class="card-3d-wrap mx-auto">
+                                <div class="card-3d-wrapper">
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <form action="dashboard" method="post">
+                                                    {%csrf_token%}
+                                                    <input type="hidden" name="checkrequest" value="login">
+
+                                                    <h4 class="mb-4 pb-3">Log In</h4>
+
+                                                    <div class="form-group">
+                                                        <input type="email" name="email" class="form-style"
+                                                            placeholder="Your Email" id="logemail" autocomplete="off">
+                                                        <i class="input-icon uil uil-at"></i>
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <input type="password" name="password" class="form-style"
+                                                            placeholder="Your Password" id="logpass" autocomplete="off">
+                                                        <i class="input-icon uil uil-lock-alt"></i>
+                                                    </div>
+                                                    <input type="submit" class="btn mt-4" value="submit">
+                                                    <p class="mb-0 mt-4 text-center"><a href="#0" class="link" style="color: blue;">Forgot
+                                                            your password?</a></p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <!-- <h4 class="mb-4 pb-3">Book demo</h4> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="welcomeui">
+
+        <div class="ui">
+            <div class="slogan">
+                <h4>Stay in scure Place with our provided Rent Rooms <mark style="padding: 0 3px;">YOUR CHOICE </mark> YOUR LIFE .</h4>
+                <p>We Provides rooms at secure places with best price you can explore our room</p>
+                <a href="#" style="font-size:13px">Explore Now</a>
+                <a href="#" class="bookdemo" style="background: transparent;
+                color: black;font-size:13px;
+                border: 1px solid;">Become a Partner</a>
+            </div>
+            <div class="slogan" style="justify-content:center;display:flex">
+                <img class="schoollogo" src="{% static 'assets/images/school-building-svgrepo-com.svg'%}" alt="" style="width: 300px;">
+            </div>
+
+        </div>
+        <img src="{% static 'assets/images/layered-waves-haikei.svg'%}" alt=""
+            style="width: 100vw;position:absolute;z-index:-1;scale:1;opacity:.6">
+
+
+    </section>
+    <section id="topoptions">
+        <div class="abouterp">
+
+        </div>
+    </section>
+</body>
+<script src="{% static 'js/style.js'%}"></script>
+
+</html>

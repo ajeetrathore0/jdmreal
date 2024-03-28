@@ -1,0 +1,302 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body{
+    padding-top:70px;
+    overflow-x: hidden;
+    
+}
+
+::-webkit-scrollbar {
+    width: 3px !important;
+}
+
+
+nav.mainnav{
+    height: 70px;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    padding: 4px 20px;
+    position: fixed;
+    top:0;
+    left:0;
+    background: white;
+    box-shadow:0px 0px 11px 1px rgba(0, 0, 0, 0.14),
+    0px 0px 19px 14px rgba(0, 0, 0, 0.03);
+    border:1px solid rgba(0, 0, 0, 0.0);
+    border-radius: 4px;z-index: 1000000;
+}
+
+nav.mainnav div.logo {
+width:50px;
+height: 80%;
+position: relative;
+
+}
+nav.mainnav div.logo img{
+height:100%;
+}
+
+.mainnav .menubar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    list-style: none;
+
+}
+
+.mainnav .menubar li:hover{
+    text-decoration:underline ;
+    cursor: pointer;
+    opacity: .7;
+}
+.mainnav .menubar li{
+    font-size: 14px !important;
+    /* font-family: 'Roboto', sans-serif !important; */
+    text-transform: capitalize;
+    font:caption;
+    line-height: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    padding: 10px 15px;
+    border-radius: 31px;
+}
+.mainnav .menu{
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap:30px;
+    right: 10px;
+
+    
+}
+
+ .usericon{
+    
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+ .usericon img{
+    height: 50%;
+}
+
+.loginsignup{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    gap:5px;
+    right: 10px;
+    top:100%;
+    padding:5px;
+    border:1px solid black;
+
+}
+
+.loginsignup::before{
+    content: '◄';
+    position: absolute;
+    -webkit-text-stroke: 1px black;
+    right: 0;
+    top:-10px;
+    transform: rotate(90deg) translatex(-6px);
+}
+.loginsignup span{
+    font-size: 14px;
+    font-weight: 800;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    border-radius: 3px;
+    padding: 3px 7px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color:white;
+    background: black;
+}
+.loginsignupshow{
+    display: flex;
+}
+
+.loginsignup span:hover{
+    background: rgba(0, 0, 0, 0.438);
+}
+
+#loginsignuparea{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 500;
+    backdrop-filter: blur(7px);
+    background: rgba(0, 0, 0, 0.767);
+}
+
+#closeloginsignuparea{
+    position:absolute;
+    right: 20px;
+    top: 20px;
+    font-family: roboto;
+    font-size: 30px;
+    font-weight: 900;
+    cursor: pointer;
+    color: wheat;
+    border-radius: 53%;
+    padding: 10px;
+    background: #937992;
+
+}
+
+#loginsignuparea form label span{
+    display: flex;
+    align-items: center;
+    margin:0px 10px;
+}
+#loginsignuparea form label img{
+    width: 30px;
+    opacity: .6;
+}
+#loginsignuparea form{
+    display: flex;
+    padding:20px;
+    flex-direction: column;
+    text-transform: uppercase;
+    background: rgba(255, 252, 252, 0.178);
+    border:1px solid rgba(0, 0, 0, 0.432);
+    border-radius: 6px;
+    color: rgb(0, 0, 0);
+    width: 80%;
+}
+
+#loginsignuparea form label{
+    display: flex;
+    margin:5px;
+    
+}
+
+#loginsignuparea form input{
+    padding:4px 10px;
+    border-radius: 3px;
+    outline: none;
+    border:none;
+    font-size:15px;
+    font-family: roboto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.575);
+    margin: 10px 2px;
+    font-weight: 700;
+    background:white !important;
+    color: black !important;
+}
+#loginsignuparea form input::placeholder{
+    color: black !important;
+}
+
+
+#loginsignuparea form input[type=submit]{
+    width: 100%;
+    text-transform: uppercase;
+    background: linear-gradient(90deg,rgba(173, 10, 214, 0.781),rgba(0, 0, 255, 0.692)) !important;
+    cursor: pointer;
+    color:white;
+}
+
+#loginsignuparea form p{
+    color:blue;
+    font-size:12px
+}
+#forget {
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.loginsignupareashow{
+    display: flex !important;
+}
+
+.welcomeui{
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    padding:20px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.welcomeui .ui{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeui .ui .slogan{
+    width: 40vw;
+}
+
+.welcomeui .slogan h4{
+    font-size: 35px;
+    color: rgb(7, 3, 3);
+    font-family: 'Sono', sans-serif;
+    margin: 10px 0px;
+    /* text-transform: uppercase; */
+}
+.welcomeui .slogan p{
+    font-size: 25px;
+    color:rgba(39, 34, 34, 0.781);
+    font-family: 'Chivo', sans-serif;
+    opacity: .6;
+    margin:20px 0px;
+}
+.welcomeui .slogan a{
+    font-size: 22px;
+    
+    font-family: 'Chivo', sans-serif;
+    
+    border-radius: 6px;
+    text-decoration: none;
+    margin:20px 0px;
+    padding:7px 10px;
+    background: rgb(190, 41, 190);
+    color:white;
+   
+    
+}
+
+
+
+
+#visual{
+    opacity: .6;
+}
+
+.activeli{
+    background: linear-gradient(45deg,rgb(209, 138, 209),rgba(52, 52, 158, 0.685));
+    color: white;
+}
+
+a.bookdemo{
+
+    background:transparent;
+    border: #e40adc;
+    box-shadow: 5px 5px 0 #e40adc;
+    margin: 0 20px;
+
+}
+
+.bookdemo:hover{
+background: #e40adc;
+border: #937992;
+}
+

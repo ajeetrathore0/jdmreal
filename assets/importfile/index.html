@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css'%}">
+    <link rel="stylesheet" href="{% static 'css/imports.css'%}">
+
+    <title>school</title>
+</head>
+<body>
+    <nav class="mainnav">
+        <div class="logo">{% static 'assets/logo/logo.svg'%}" alt=""></div>
+        <div class="menu">
+            <ul class="menubar">
+                <li class="menues">home</li>
+                <li class="menues">about</li>
+                <li class="menues">course</li>
+                <li class="menues">news</li>
+                <li class="menues">contact</li>
+            </ul>
+            <div class="usericon">
+<!--                <img src="/assets/logos/user.svg" alt="">-->
+            </div>
+            
+
+        </div>
+        <div class="loginsignup ">
+            <span id="login" class="lsbtn">login</span>
+            <!-- <span id="signup"  class="lsbtn">signup</span> -->
+        </div>
+        
+    </nav>
+
+    <section id="loginsignuparea">
+        <span id="closeloginsignuparea">X</span>
+<!--        <img src="/assets/logos/logo.svg" alt="" css="width:60px;margin:10px">-->
+
+        <form action="/check_data"  method="get">
+<!--            <label for="email">-->
+<!--                <span><img src="/assets/logos/email.svg" alt=""></span><input type="text" name="name" id="" placeholder="Enter email">-->
+<!--            </label>-->
+<!--            <label for="password">-->
+<!--                <span><img src="/assets/logos/password.svg" alt=""></span><input type="password" name="password" id="" placeholder="Enter password">-->
+<!--            </label>-->
+<!--            <label for="submit">-->
+<!--               <input type="submit" value="login" id="" placeholder="Enter password">-->
+<!--            </label>-->
+            <label for="forget" id="forget">
+                <span><p>Signup</p></span>
+                <span><p>forgot password</p></span>
+            </label>
+        </form>
+    </section>
+
+    <section class="welcomeui">
+
+        <div class="ui">
+            <div class="slogan">
+                <h4>Transform your school's operations with our reliable and user-friendly erp software .</h4>
+                <p>simplify  your school's administration with our innovative erp software</p>
+                <a href="#">Download software</a>
+            </div>
+            <div class="slogan">
+<!--                <img src="/assets/logos/email.svg" alt="">-->
+            </div>
+            
+        </div>
+    </section>
+    <section id="topoptions">
+        <h4>Plans</h4>
+        <div class="options">
+            <div class="option">
+                <span class="opthead">
+                    <h2>heading</h2>
+                </span>
+                <span class="optbody">
+                    <h4>content</h4>
+                </span>
+
+            </div>
+            <div class="option">
+                <span class="opthead">
+                    <h2>heading</h2>
+                </span>
+                <span class="optbody">
+                    <h4>content</h4>
+                </span>
+
+            </div>
+            <div class="option">
+                <span class="opthead">
+                    <h2>heading</h2>
+                </span>
+                <span class="optbody">
+                    <h4>content</h4>
+                </span>
+
+            </div>
+            
+            
+        </div>
+    </section>
+</body>
+<!--<script src="js/css.js"></script>-->
+</html>

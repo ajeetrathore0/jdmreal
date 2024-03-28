@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- index22:59-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>School dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'assets/css/style.css'%}">
+</head>
+<style>
+    .dash-widget {
+        height: 100%;
+
+    }
+
+    .col-xl-3 {
+        margin: 2px 0;
+    }
+</style>
+
+<body>
+
+    <script src="{%static 'componants/superadmin.js'%}"></script>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+
+
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="dash-widget">
+                        <span class="dash-widget-bg1"><img src="{%static 'assets/logos/admin.jpg'%}" alt=""
+                                width="80"></i></span>
+                        <div class="dash-widget-info text-right">
+                            <h3>{{usercount.admin}}</h3>
+                            <span class="widget-title1">Admin<i class="fa fa-check" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="dash-widget">
+                        <span class="dash-widget-bg1"><img src="{%static 'assets/logos/administration.jpg'%}" alt=""
+                                width="95%" style="border-radius: 50%;"></span>
+                        <div class="dash-widget-info text-right">
+                            <h3>{{usercount.administrator}}</h3>
+                            <span class="widget-title1">Administration <i class="fa fa-check"
+                                    aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chartjs-size-monitor"
+                                style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand"
+                                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink"
+                                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                </div>
+                            </div>
+                            <div class="chart-title">
+                                <h4>Total Revenue Of This Year:</h4>
+                                <span class="float-right"><i class="fa fa-caret-up" aria-hidden="true"></i> 15% Higher
+                                    than Last Month</span>
+                            </div>
+                            <canvas id="linegraph" width="392" height="196"
+                                style="display: block; width: 392px; height: 196px;"
+                                class="chartjs-render-monitor"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chartjs-size-monitor"
+                                style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand"
+                                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink"
+                                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                </div>
+                            </div>
+                            <div class="chart-title">
+                                <h4>Fees Paids</h4>
+                                <div class="float-right">
+                                    <ul class="chat-user-total">
+                                        <li><i class="fa fa-circle current-users" aria-hidden="true"></i>PAID</li>
+                                        <li><i class="fa fa-circle old-users" aria-hidden="true"></i> NOT PAID</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <canvas id="bargraph" width="392" height="196"
+                                style="display: block; width: 392px; height: 196px;"
+                                class="chartjs-render-monitor"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title d-inline-block">Upcoming Appointments</h4> <a href="appointments.html"
+                                class="btn btn-primary float-right">View all</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="d-none">
+                                        <tr>
+                                            <th>Patient Name</th>
+                                            <th>Doctor Name</th>
+                                            <th>Timing</th>
+                                            <th class="text-right">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="min-width: 200px;">
+                                                <a class="avatar" href="profile.html">B</a>
+                                                <h2><a href="profile.html">Bernardo Galaviz <span>New York,
+                                                            USA</span></a></h2>
+                                            </td>
+                                            <td>
+                                                <h5 class="time-title p-0">Appointment With</h5>
+                                                <p>Dr. Cristina Groves</p>
+                                            </td>
+                                            <td>
+
+                                                <h5 class="time-title p-0">Timing</h5>
+                                                <p>7.00 PM</p>
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="appointments.html"
+                                                    class="btn btn-outline-primary take-btn">Take up</a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                    <div class="card member-panel">
+                        <div class="card-header bg-white">
+                            <h4 class="card-title mb-0">Doctors</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="contact-list">
+                                <li>
+                                    <div class="contact-cont">
+                                        <div class="float-left user-img m-r-10">
+                                            <a href="profile.html" title="John Doe"><img src="" alt=""
+                                                    class="w-40 rounded-circle"><span class="status online"></span></a>
+                                        </div>
+                                        <div class="contact-info">
+                                            <span class="contact-name text-ellipsis">John Doe</span>
+                                            <span class="contact-date">MBBS, MD</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center bg-white">
+                            <a href="doctors.html" class="text-muted">View all Doctors</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notification-box">
+            <div class="msg-sidebar notifications msg-noti">
+                <div class="topnav-dropdown-header">
+                    <span>Messages</span>
+                </div>
+                <div class="drop-scroll msg-list-scroll" id="msg_list">
+                    <ul class="list-box">
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">R</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Richard Miles </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item new-message">
+                                    <div class="list-left">
+                                        <span class="avatar">J</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">John Doe</span>
+                                        <span class="message-time">1 Aug</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">T</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Tarah Shropshire </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">M</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Mike Litorus</span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">C</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Catherine Manseau </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">D</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Domenic Houston </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">B</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Buster Wigton </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">R</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Rolland Webber </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">C</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author"> Claire Mapes </span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">M</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Melita Faucher</span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">J</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Jeffery Lalor</span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">L</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Loren Gatlin</span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="chat.html">
+                                <div class="list-item">
+                                    <div class="list-left">
+                                        <span class="avatar">T</span>
+                                    </div>
+                                    <div class="list-body">
+                                        <span class="message-author">Tarah Shropshire</span>
+                                        <span class="message-time">12:28 AM</span>
+                                        <div class="clearfix"></div>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="topnav-dropdown-footer">
+                    <a href="chat.html">See all messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container" id="showmoredetails">
+
+    </div>
+    <style>
+        #showmoredetails {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: black;
+            max-width: 100vw;
+            z-index: 10000;
+            display: none;
+        }
+    </style>
+    <div class=" showmoredetails ">
+
+    </div>
+    <!-- <form action="checkuser" method="post" id="reloaddash">
+        <input type="hidden" class="userkey">
+    </form> -->
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{%static 'assets/js/jquery-3.2.1.min.js'%}"></script>
+    <script src="{%static 'assets/js/popper.min.js'%}"></script>
+    <script src="{%static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'assets/js/jquery.slimscroll.js'%}"></script>
+    <script src="{%static 'assets/js/Chart.bundle.js'%}"></script>
+    <script src="{%static 'assets/js/chart.js'%}"></script>
+    <script src="{%static 'assets/js/app.js'%}"></script>
+    <script src="{%static 'assets/js/index.js'%}"></script>
+
+
+</body>
+
+<script>
+
+    localStorage.setItem('userkey', '{{useralldata.id}}')
+    let dash = document.getElementById('dashboards');
+    let userkey = '';
+    if (localStorage.getItem('userkey')) {
+        userkey = localStorage.getItem('userkey')
+    }
+
+    let typespan = document.querySelector('#type')
+    typespan.innerText = '{{useralldata.type}}'
+
+    let mainlogo = document.getElementById('mainlogo')
+    mainlogo.src = "{%static 'assets/logos/logo.png'%}"
+
+    document.querySelector('#username').innerText = '{{useralldata.name}}'
+
+
+
+
+
+    function fetchdata(e) {
+        e.preventDefault()
+
+
+        let dt = {
+            "userkey": localStorage.getItem('userkey'),
+            "datatype": e.target.id,
+            "type": "superadmin",
+
+        }
+        let data = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{csrf_token}}",
+            },
+            body: JSON.stringify(dt),
+
+        }
+
+
+        fetch('senddata', data).then(response => response.json()).then(dt => {
+            document.querySelector('.content').innerHTML = dt.html
+            let html;
+
+
+            dt.admindata.forEach(elem => {
+                html += `
+                                <tr>
+                                <td>
+                                    <img style='width:70px' src="data:image/png;base64,${elem.img1}">
+                                </td>
+                                <td>${elem.location}</td>
+                                <td>${elem.area}</td>
+                                <td>${elem.about}</td>
+                                <td>${elem.price}</td>
+                              <!--  <td>
+                                    <span class="custom-badge status-green">Data</span>
+                                </td> -->
+                                <td class="text-right">
+                                    <div class="dropdown dropdown-action">
+                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#viewproduct" onclick="viewproduct('${elem.uuid}')"><i
+                                                    class="fa fa-pencil m-r-5" ></i> View</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                data-target="#delete_employee" onclick="deleteroom('${elem.uuid}',event)"><i class="fa fa-trash-o m-r-5"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                                `
+            })
+         let datacontent= document.querySelector('#datacontent');
+         datacontent.innerHTML = html
+         datacontent.firstChild.remove()
+
+
+        })
+
+    }
+
+
+
+     function fetchdataclients(e) {
+        e.preventDefault()
+
+
+        let dt = {
+            "userkey": localStorage.getItem('userkey'),
+            "datatype": e.target.id,
+            "type": "superadmin",
+
+        }
+        let data = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{csrf_token}}",
+            },
+            body: JSON.stringify(dt),
+
+        }
+
+
+        fetch('senddata', data).then(response => response.json()).then(dt => {
+            document.querySelector('.content').innerHTML = dt.html
+            let html;
+
+
+            dt.admindata.forEach(elem => {
+                html += `
+                                <tr>
+
+                                <td>${elem.client_name}</td>
+                                <td>${elem.client_mobile_no}</td>
+                                <td>${elem.note}</td>
+                                <td>${elem.conversation_time}</td>
+
+                                <td class="text-right">
+                                    <div class="dropdown dropdown-action">
+                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#viewproduct" onclick="viewproduct('${elem.room_uuid}')"><i
+                                                    class="fa fa-pencil m-r-5" ></i> View</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                data-target="#delete_employee" onclick="deleteclient('${elem.id}',event)"><i class="fa fa-trash-o m-r-5"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                                `
+            })
+         let datacontent= document.querySelector('#datacontent');
+         datacontent.innerHTML = html
+         datacontent.firstChild.remove()
+
+
+        })
+
+    }
+
+
+
+
+
+
+    let dashboardbtn = document.querySelector('#dashboards a');
+    dashboardbtn.addEventListener('click', async (e) => {
+        e.preventDefault()
+
+    })
+
+
+    function addnewitem(e) {
+        e.preventDefault()
+        document.querySelector(
+            '.showmoredetails'
+        ).classList.add('shown');
+
+
+        document.querySelector(
+            '.showmoredetails'
+        ).innerHTML = `
+    <div class="row" style="width:100%;margin:10px">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="card-title"><strong> Add item</strong></h4>
+                            <form action="saveitems" method='post' enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4 class="card-title" title="add locaation of room/etc">Location</h4>
+                                            <input type="text" name="location" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4 class="card-title" title="add locaation of room/etc">Area<span style="font-size:10px;opacity:.5">(like: 2bhk)</span></h4>
+                                            <input type="text" name="area" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4 class="card-title" title="add locaation of room/etc">About</h4>
+                                            <input type="text" name="about" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4 class="card-title" title="add locaation of room/etc">Price</h4>
+                                            <input type="text" name="price" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <h4 class="card-title">Images</h4>
+                                <div class="row">
+                                    <div class="col-md-12" id="homeworkimages">
+                                        <span style="display:flex">
+                                        <input type="file" name='img1' accept="image/jpeg,jpg,img" class="form-control">
+                                        <!--<span class='btn btn-outline-primary mx-1' onclick='removeParent(event)'>-</span>-->
+                                        <span>
+                                    </div>
+                                    <div class="col-md-12" style="display:flex;justify-content:right;">
+                                        <input type="button" class="form-control my-2"  value="+" onclick="homeworkimg(event)" style="width:40px;background:#d690d7;cursor:pointer">
+                                   </div>
+                                </div>
+                                <h4 class="card-title">Note</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control my-2" name="note"></textarea>
+                                    </div>
+
+                                </div>
+                                <input type='hidden' name='imgcount' id='homewimg' value='1'>
+
+                                <div class="text-right my-3 ">
+                                    <button type="submit" class="btn  btn-primary " onclick="closemoredetails(event)" style="background:lightcoral">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    `
+
+    }
+    function closemoredetails(e) {
+        e.preventDefault()
+        document.querySelector(
+            '.showmoredetails'
+        ).classList.remove('shown');
+    }
+var homeworkimgcount = 1;
+
+
+function homeworkimg(e) {
+    let parent=e.target.parentNode.previousElementSibling
+    let count=parent.childElementCount
+    if(parent.childElementCount>5){
+        return false;
+    }
+       else if (parent.childElementCount ) {
+            homeworkimgcount =count+1
+
+
+
+            document.querySelector('#homewimg').value = homeworkimgcount
+
+            // let child = document.createElement('input')
+            // child.setAttribute('class', 'form-control my-2')
+            // child.name = 'img' + homeworkimgcount
+            // child.value = 'img' + homeworkimgcount
+            // child.type = 'file'
+            // child.accept = 'image/jpeg,jpg,img'
+            let span = document.createElement('span')
+            span.setAttribute('class','my-2')
+
+
+
+            span.style.display='flex'
+
+            span.innerHTML=`
+            <input type="file" name='img${count+1}'  accept="image/jpeg,jpg,img" class="form-control"><span class='btn btn-outline-primary mx-1' onclick='removeParent(event)'>-</span>
+
+            `
+
+            document.getElementById('homeworkimages').appendChild(span)
+        }
+        else {
+            e.target.disabled = true
+            e.target.setAttribute('title', 'you exceed the max img numbers')
+            count=-1
+        }
+    }
+function removeParent(e){
+    e.target.parentNode.remove()
+    homeworkimgcount = document.getElementById('homeworkimages').childElementCount
+    document.querySelector('#homewimg').value = homeworkimgcount
+
+
+}
+function viewproduct(e){
+    document.querySelector(
+            '.showmoredetails'
+        ).classList.add('shown');
+
+    let dt = {
+            "uuid": e,
+            "datatype": 'roomdata',
+
+        }
+        let data = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{csrf_token}}",
+            },
+            body: JSON.stringify(dt),
+
+        }
+
+
+        fetch('senddata', data).then(response => response.json()).then(dt => {
+            // document.querySelector('.content').innerHTML = dt.html
+            let html;
+
+
+
+            dt.admindata.forEach(elem => {
+                html = `
+                <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">View Item</h4>
+                    </div>
+                </div>
+                <form>
+                    <div class="card-box">
+                        <h3 class="card-title">Basic Informations</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            Location :
+                                            <div class="form-group form-focus">
+
+                                                <input type="text" readonly class="form-control floating" value="${elem.location}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            Price :
+                                            <div class="form-group form-focus">
+
+                                                <input type="text" readonly class="form-control floating" value="${elem.price}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            Area :
+                                            <div class="form-group form-focus">
+
+                                                <input type="text" readonly class="form-control floating" value="${elem.area}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            About :
+                                            <div class="form-group form-focus">
+
+                                                <input type="text" readonly class="form-control floating" value="${elem.about}">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <h3 class="card-title">All Images</h3>
+                        <div class="row" >
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img1}">
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img2}">
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img3}">
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img4}">
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img5}">
+                            <img class='mx-2 my-2' style='width:140px' src="data:image/png;base64,${elem.img6}">
+
+                        </div>
+                    </div>
+                            <div class="text-center m-t-20">
+                        <button class="btn btn-outline-primary submit-btn" style="color:red" type="button" onclick="closemoredetails(event)">close</button>
+                        <button class="btn btn-primary submit-btn" type="button">Edit</button>
+                    </div>
+                </form>
+            </div>
+                                `
+            })
+
+            document.querySelector('.showmoredetails').innerHTML = html
+
+
+        })
+
+}
+
+
+
+function deleteroom(e,f){
+
+
+
+
+        fetch(`deleteroom/${e}`).then(response => response.json()).then(dt => {
+           if(dt.success==true){
+                let parent=f.target.parentNode.parentNode.parentNode.parentNode
+    parent.remove()
+           }
+           else{
+               alert('some error occured')
+           }
+
+        })
+
+}
+
+
+function deleteclient(e,f){
+
+
+        fetch(`deleteclient/${e}`).then(response => response.json()).then(dt => {
+           if(dt.success==true){
+                let parent=f.target.parentNode.parentNode.parentNode.parentNode
+    parent.remove()
+           }
+           else{
+               alert('some error occured')
+           }
+
+        })
+
+}
+
+
+</script>
+<!-- index22:59-->
+
+</html>
